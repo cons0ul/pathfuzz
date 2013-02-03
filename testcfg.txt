@@ -1,0 +1,235 @@
+Start   MOVEDRAWTOCOMMANDGROUPS
+
+MOVEDRAWTOCOMMANDGROUPS  		  20	MOVEDRAWTOCOMMANDGROUP
+    					                80  MOVEDRAWTOCOMMANDGROUPS_1 
+
+
+MOVEDRAWTOCOMMANDGROUPS_1   MOVEDRAWTOCOMMANDGROUP wsp MOVEDRAWTOCOMMANDGROUPS
+
+
+MOVEDRAWTOCOMMANDGROUP 		moveto wsp drawtocommands
+
+drawtocommands 				10	drawtocommand
+    							    80 	drawtocommands_1
+
+drawtocommands_1        drawtocommand wsp drawtocommands 
+
+
+drawtocommand 		1 	closepath
+  			1	lineto
+    			1	horizontallineto
+  	  		1 verticallineto
+    			1  curveto
+    			1  smoothcurveto
+    			1   quadraticbeziercurveto
+    			1  smoothquadraticbeziercurveto
+    			1  ellipticalarc
+
+
+moveto 			1	moveto_1
+			1 moveto_2
+
+
+moveto_1            "M " MOVETOARGUMENTSEQUENCE ""
+moveto_2            "m " MOVETOARGUMENTSEQUENCE ""  
+
+
+MOVETOARGUMENTSEQUENCE  		1	coordinatepair
+   					80 	MOVETOARGUMENTSEQUENCE_1
+
+MOVETOARGUMENTSEQUENCE_1    coordinatepair commawsp linetoargumentsequence                            
+
+closepath 					1 	"Z " 
+						1 	"z "
+
+
+lineto 						1 "L " 	 lineto_1
+						1 "l "   lineto_2
+
+lineto_1          "L "   linetoargumentsequence
+lineto_2          "l "   linetoargumentsequence
+
+
+linetoargumentsequence  		20	coordinatepair
+    				        80  linetoargumentsequence_1
+
+
+linetoargumentsequence_1     coordinatepair commawsp linetoargumentsequence                            
+
+horizontallineto  			1	horizontallineto_2
+					1 	horizontallineto_1
+
+horizontallineto_1      " H "   horizontallinetoargumentsequence
+horizontallineto_2      " h "   horizontallinetoargumentsequence                  
+
+horizontallinetoargumentsequence 		1	coordinate
+ 					        1       horizontallinetoargumentsequence_1
+
+horizontallinetoargumentsequence_1  coordinate commawsp horizontallinetoargumentsequence
+
+
+verticallineto   			1 verticallineto_2
+          				1 verticallineto_1
+
+verticallineto_1                      " V "   verticallinetoargumentsequence
+verticallineto_2                      " v "   verticallinetoargumentsequence
+
+
+verticallinetoargumentsequence  			1	  coordinate
+    							1 	verticallinetoargumentsequence_1
+
+verticallinetoargumentsequence_1      coordinate commawsp verticallinetoargumentsequence                                      
+
+
+curveto  					1 curveto_1
+    						1 curveto_2
+
+
+curveto_1                  " C "   wsp curvetoargumentsequence
+curveto_2                  " c "   wsp curvetoargumentsequence
+
+
+curvetoargumentsequence  		1	curvetoargument
+           							    1 curvetoargumentsequence_1
+
+curvetoargumentsequence_1     curvetoargument commawsp curvetoargumentsequence                            
+
+curvetoargument 				coordinatepair commawsp coordinatepair commawsp coordinatepair
+
+smoothcurveto             1 smoothcurveto_1
+                          1 smoothcurveto_2			
+
+smoothcurveto_1                    	" S "   wsp smoothcurvetoargumentsequence
+smoothcurveto_2						        	"s"  wsp smoothcurvetoargumentsequence
+
+smoothcurvetoargumentsequence  			1	smoothcurvetoargument
+   										              1 smoothcurvetoargumentsequence_1
+
+smoothcurvetoargumentsequence_1       	smoothcurvetoargument commawsp smoothcurvetoargumentsequence
+
+                                    
+
+smoothcurvetoargument  					coordinatepair commawsp coordinatepair
+
+
+quadraticbeziercurveto 	                1 quadraticbeziercurveto_1
+                                        1 quadraticbeziercurveto_2			   
+
+quadraticbeziercurveto_1                 " Q "  wsp quadraticbeziercurvetoargumentsequence
+quadraticbeziercurveto_2          			 "q"  wsp quadraticbeziercurvetoargumentsequence
+
+
+quadraticbeziercurvetoargumentsequence 		1   quadraticbeziercurvetoargument
+    										                	1   quadraticbeziercurvetoargument_1 
+        										              1	  quadraticbeziercurvetoargumentsequence
+
+quadraticbeziercurvetoargument_1          quadraticbeziercurvetoargument commawsp
+
+quadraticbeziercurvetoargument  				  coordinatepair commawsp coordinatepair
+
+smoothquadraticbeziercurveto 				1 smoothquadraticbeziercurveto_1
+                                    1 smoothquadraticbeziercurveto_2
+smoothquadraticbeziercurveto_1       "T"	wsp smoothquadraticbeziercurvetoargumentsequence
+smoothquadraticbeziercurveto_2	     "t"  wsp smoothquadraticbeziercurvetoargumentsequence
+
+smoothquadraticbeziercurvetoargumentsequence  		1	coordinatepair
+    													                    1 smoothquadraticbeziercurvetoargumentsequence_1
+
+smoothquadraticbeziercurvetoargumentsequence_1  coordinatepair commawsp smoothquadraticbeziercurvetoargumentsequence                                                  
+
+ellipticalarc       1  ellipticalarc_1
+                    1  ellipticalarc_2	  
+                  
+ellipticalarc_1     " A "  wsp ellipticalarcargumentsequence
+ellipticalarc_2			" a "  wsp ellipticalarcargumentsequence
+
+
+ellipticalarcargumentsequence  		1	ellipticalarcargument
+    								          		1 ellipticalarcargumentsequence_1
+
+ellipticalarcargumentsequence_1     ellipticalarcargument commawsp ellipticalarcargumentsequence                                  
+
+ellipticalarcargument  	      1 ellipticalarcargument_1
+                              1 ellipticalarcargument_2			
+
+ellipticalarcargument_1                             	nonnegativenumber commawsp nonnegativenumber commawsp 
+ellipticalarcargument_2      									     		number commawsp flag commawsp flag commawsp coordinatepair
+
+coordinatepair  					coordinate commawsp coordinate
+
+coordinate 						number
+
+nonnegativenumber  			1	integerconstant
+
+
+
+number 					1	integerconstant
+
+
+flag 						1	  "0" 
+						1 	"1"
+
+commawsp   						","
+
+
+
+integerconstant  				10	digitsequence
+					        1	   d
+					        10	 s
+
+d 						"+"		digitsequence
+s						"-"	  digitsequence
+
+
+floatingpointconstant  		1	 f_1
+		           	1	 fractionalconstant
+	      	                1  f_2
+
+f_1       fractionalconstant exponent
+f_2       digitsequence exponent
+
+
+fractionalconstant 						1	  aa
+  							        1 	bb 
+  							        1	  cc
+
+
+aa	digitsequence "." digitsequence
+bb	digitsequence "."
+cc  "." digitsequence  							    
+
+
+
+exponent 				1 aaa
+								1  aaa_1
+								1 aaa_2
+								1 aaa_3
+
+aaa     "E"  digitsequence
+aaa_1   "e"  digitsequence
+aaa_2   "e"  "-"  digitsequence
+aaa_3   "E"  "+"  digitsequence
+
+
+
+
+
+
+digitsequence 				1	 digit
+    					1 	digitsequence_1 
+
+digitsequence_1   digit digitsequence
+
+
+digit 							1	"0" 
+								1 	"1" 
+								1 	"2" 
+								1 	"3" 
+								1 	"4" 
+								1 	"5" 
+								1 	"6" 
+								1 	"7" 
+								1 	"8" 
+								1 	"9"
+
+wsp  								" "
